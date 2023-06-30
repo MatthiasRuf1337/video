@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videobewerbung</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/material-components-web@11.0.0/dist/material-components-web.min.css" rel="stylesheet"> 
+  <link href="style.css" rel="stylesheet">
+  <link rel="icon" href="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" sizes="32x32" />
+  <link rel="icon" href="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" />
+  <meta name="msapplication-TileImage" content="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" />
+  <script>
+    function checkID() {
+      var id = document.getElementById("idInput").value; // Die eingegebene ID abrufen
+      if (id !== "") {
+        window.location.href = "record.html?id=" + id; // Weiterleitung zur record.html mit übergebener ID
+      } else {
+        alert("Bitte geben Sie eine ID ein.");
+      }
+    }
+
+    // Überprüfen, ob eine ID bereits in der URL vorhanden ist
+    window.onload = function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var id = urlParams.get("id");
+      if (id !== null && id !== "") {
+        window.location.href = "record.html?id=" + id; // Weiterleitung zur record.html mit vorhandener ID
+      }
+    };
+  </script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://swissbutler.ch/wp-content/uploads/2020/11/SwissButler.svg" alt="SwissButler" width="270" height="68">
+      </a>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="box">
+      <div class="headline">
+        <h1>ID-Überprüfung</h1>
+                <p>Bitte geben Sie Ihre ID ein, um fortzufahren. Sie finden Ihre ID in der Bewerbungsnachricht, die wir Ihnen gesendet haben. Stellen Sie sicher, dass Sie die ID korrekt eingeben, um zur nächsten Seite zu gelangen.</p>
+
+        <div class="mdc-text-field mdc-text-field--outlined">
+          <input type="text" id="idInput" class="mdc-text-field__input" placeholder="Geben Sie eine ID ein">
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
+        <button class="mdc-button mdc-button--raised" onclick="checkID()">Überprüfen</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

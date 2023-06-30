@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videobewerbung</title>
+ <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/material-components-web@11.0.0/dist/material-components-web.min.css" rel="stylesheet"> 
+  <link href="style.css" rel="stylesheet">
+<link rel="icon" href="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" sizes="32x32" />
+<link rel="icon" href="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" />
+<meta name="msapplication-TileImage" content="https://swissbutler.ch/wp-content/uploads/2020/11/favicon.png" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://swissbutler.ch/wp-content/uploads/2020/11/SwissButler.svg" alt="SwissButler" width="270" height="68">
+      </a>
+    </div>
+  </nav>
+<div>
+  <div class="container">
+<div class="box">
+    <div class="headline">
+      <h1>Bewerben Sie sich per Video bei SwissButler</h1>
+    </div>
+   <div>
+ <p>Um uns ein besseres Bild von Ihnen machen zu können, möchten wir Sie bitten, uns in einem kurzen 30-Sekunden-Video von Ihrer Erfahrung zu erzählen.</p>
+    <p><span class="material-icons mdc-list-item__graphic" aria-hidden="true" style="vertical-align: middle;">check_circle</span> Bitte teilen Sie uns mit, wo Sie Erfahrungen als Haushaltshilfe in Privathaushalten oder ähnlichen Positionen gesammelt haben.</p>
+    <p><span class="material-icons mdc-list-item__graphic" aria-hidden="true" style="vertical-align: middle;">check_circle</span> Ausserdem interessiert uns, was Sie an der Stelle als Haushaltshilfe bei SwissButler anspricht.</p>
+</div>
+  <button id="start" class="mdc-button mdc-button--raised">Start Aufnahme</button>
+<button id="stop" class="mdc-button">Stop Aufnahme</button>
+</div>
+<div class="box2">
+    <div id="preview-container">
+        <div id="upload-message" style="display: none;"><h3>Ihre Datei wird gerade hochgeladen. Sie werden weitergeleitet sobald das Video erfolgreich hochgeladen wurde.</h3></div>
+      <video id="preview" autoplay muted playsinline></video>
+      <canvas id="countdown"></canvas>
+      <div id="timer-overlay"></div>
+    </div>
+    </div>
+    <p id="upload-progress"></p>
+  </div>
+
+  <script src="https://unpkg.com/material-components-web@11.0.0/dist/material-components-web.min.js"></script>
+  <script src="scripts.js"></script>
+  </div>
+</body>
+</html>

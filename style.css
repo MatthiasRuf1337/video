@@ -1,0 +1,120 @@
+#preview-container {
+  position: relative;
+  width: 100%;
+  padding-top: 20px;
+  display: flex; /* Flexbox hinzufügen */
+  align-items: center; /* Vertikale Zentrierung hinzufügen */
+  justify-content: center; /* Horizontale Zentrierung hinzufügen */
+  flex-direction: column; /* Kinder in einer Spalte anordnen */
+}
+
+#preview {
+  width: 100%;
+  object-fit: contain;
+}
+#countdown {
+ position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+      font-weight: bold;
+    color: white;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5); /* halbtransparentes Schwarz */
+    border-radius: 50%; /* macht das Element rund */
+    width: 120px; /* Breite des Elements */
+    height: 120px; /* Höhe des Elements */
+    display: flex; /* CSS-Flexbox für die Ausrichtung des Inhalts */
+    align-items: center; /* zentriert den Inhalt vertikal */
+    justify-content: center; /* zentriert den Inhalt horizontal */
+    text-align: center;
+}
+
+
+#start,
+#stop {
+  position: relative;
+  z-index: 1000;
+}
+
+#timer-overlay {
+   position: absolute;
+    top: 30px;
+    right: 10px;
+    z-index: 1000;
+    color: white; /* Oder eine andere Farbe, die auf dem Hintergrundvideo sichtbar ist */
+    font-size: 24px; /* oder jede gewünschte Größe */
+}
+
+
+
+#upload-progress {
+  font-size: 18px;
+  color: white;
+}
+
+#upload-message {
+  display: flex; /* Flexbox hinzufügen */
+  align-items: center; /* Vertikale Zentrierung hinzufügen */
+  justify-content: center; /* Horizontale Zentrierung hinzufügen */
+  width: 100%; /* Element auf volle Breite des Containers setzen */
+  height: 100%; /* Element auf volle Höhe des Containers setzen */
+  position: absolute; /* Absolute Positionierung hinzufügen, damit es über den anderen Elementen angezeigt wird */
+  z-index: 2; /* Z-Index erhöhen, damit es über den anderen Elementen angezeigt wird */
+  color: #000; 
+}
+
+    .navbar {
+      background-color: #fff;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .mdc-button.mdc-button--raised {
+}
+
+.box {
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 40px;
+  border-radius: 25px;
+}
+
+
+.box2 {
+  display: none; /* Diese Zeile hinzufügen */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 40px;
+  border-radius: 25px;
+  margin-top:50px;
+}
+
+p {
+        font-size: 18px !important;
+}
+
+h1, h2, h3, h4, h5, p {
+  color: #524e4e;
+}
+.material-icons.mdc-list-item__graphic {
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .box, .box2 {
+    padding: 20px;
+  }
+.container {
+      padding: 10px;
+      }
+}
