@@ -4,28 +4,26 @@ let stream;
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
-
 document.querySelector('#start').addEventListener('click', () => {
   const constraints = {
     audio: true,
-    video: true
-
+    video: true,
   };
 
-  navigator.mediaDevices.getUserMedia(constraints)
-    .then(localMediaStream => {
+  navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then((localMediaStream) => {
       // Diese Zeile macht .box2 sichtbar, wenn der Startknopf geklickt wird
       document.querySelector('.box2').style.display = 'block';
-document.querySelector('body').scrollIntoView({ behavior: 'smooth', block: 'end' });
-
+      document.querySelector('body').scrollIntoView({ behavior: 'smooth', block: 'end' });
 
       stream = localMediaStream;
       document.querySelector('#preview').srcObject = stream;
       mediaRecorder = new MediaRecorder(stream);
 
       mediaRecorder.onstop = (event) => {
-            document.querySelector('#upload-message').style.display = 'flex';
-        const blob = new Blob(recordedBlobs, {type: 'video/webm'});
+        document.querySelector('#upload-message').style.display = 'flex';
+        const blob = new Blob(recordedBlobs, { type: 'video/webm' });
         const fileName = generateUniqueFileName(); // Generierung eines eindeutigen Dateinamens
         const formData = new FormData();
         formData.append('video', blob, fileName);
@@ -43,19 +41,19 @@ document.querySelector('body').scrollIntoView({ behavior: 'smooth', block: 'end'
           }
         });
 
-       xhr.onreadystatechange = function() {
-  if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
-                document.querySelector('#upload-message').style.display = 'none';
-      console.log('Video wurde erfolgreich hochgeladen!');
-      progressElement.textContent = 'Video wurde erfolgreich hochgeladen!';
-      window.location.href = '/danke.html';  // Ändern Sie dies in die URL, zu der Sie weiterleiten möchten.
-    } else {
-      console.error('Fehler beim Hochladen des Videos.');
-      progressElement.textContent = 'Fehler beim Hochladen des Videos.';
-    }
-  }
-};
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              document.querySelector('#upload-message').style.display = 'none';
+              console.log('Video wurde erfolgreich hochgeladen!');
+              progressElement.textContent = 'Video wurde erfolgreich hochgeladen!';
+              window.location.href = '/danke.html'; // Ändern Sie dies in die URL, zu der Sie weiterleiten möchten.
+            } else {
+              console.error('Fehler beim Hochladen des Videos.');
+              progressElement.textContent = 'Fehler beim Hochladen des Videos.';
+            }
+          }
+        };
 
         xhr.send(formData);
       };
@@ -95,7 +93,7 @@ document.querySelector('body').scrollIntoView({ behavior: 'smooth', block: 'end'
                 mediaRecorder.stop();
                 document.querySelector('#start').disabled = false;
                 document.querySelector('#stop').disabled = true;
-                stream.getTracks().forEach(track => track.stop());
+                stream.getTracks().forEach((track) => track.stop());
                 document.querySelector('#preview').srcObject = null;
               }
             };
@@ -108,20 +106,20 @@ document.querySelector('body').scrollIntoView({ behavior: 'smooth', block: 'end'
             context.textBaseline = 'middle';
             context.fillText(count, countdownCanvas.width / 2, countdownCanvas.height / 2);
             count--;
-          } 
+          }
         }, 1000);
       };
 
       startRecording();
     })
-    .catch(error => console.error('Error:', error));
+    .catch((error) => console.error('Error:', error));
 });
 
 document.querySelector('#stop').addEventListener('click', () => {
   mediaRecorder.stop();
   document.querySelector('#start').disabled = false;
   document.querySelector('#stop').disabled = true;
-  stream.getTracks().forEach(track => track.stop());
+  stream.getTracks().forEach((track) => track.stop());
   document.querySelector('#preview').srcObject = null;
 });
 
@@ -133,15 +131,14 @@ function generateUniqueFileName() {
   // Aktuellen Zeitstempel und zufällige Zeichenkette generieren
   const timestamp = new Date().getTime();
   const randomString = Math.random().toString(36).substring(2, 8);
-  
+
   // Wenn die ID vorhanden ist, wird sie dem Dateinamen vorangestellt
   if (id) {
     return `${id}_${timestamp}_${randomString}.webm`;
   }
-  
+
   // Ansonsten wird der Dateiname wie zuvor generiert
   return `${timestamp}_${randomString}.webm`;
 }
-
 
 mdc.autoInit();
