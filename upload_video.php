@@ -5,6 +5,24 @@ $username = "dbname";
 $password = "W^ZPM+hWhqc{GFCF1r?=AuRvt^58nE%_";
 $dbname = "videoapp";
 
+$sql = "SELECT path2 FROM videos WHERE id=?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+if (empty($row['path2'])) {
+    // Wenn path2 leer ist, speichern Sie das Video in path2
+    $stmt = $conn->prepare("UPDATE videos SET path2=? WHERE id=?");
+    $stmt->bind_param("ss", $filePath, $id);
+} else {
+    // Ansonsten speichern Sie das Video in path (wie zuvor)
+    $stmt = $conn->prepare("INSERT INTO videos (id, path, user_agent, upload_time) VALUES (?, ?, ?, NOW())");
+    $stmt->bind_param("sss", $id, $filePath, $userAgent);
+}
+
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);

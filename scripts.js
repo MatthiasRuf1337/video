@@ -1,6 +1,7 @@
 let mediaRecorder;
 let recordedBlobs = [];
 let stream;
+let isFirstVideo = true;
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
@@ -47,7 +48,7 @@ document.querySelector('#start').addEventListener('click', () => {
               document.querySelector('#upload-message').style.display = 'none';
               console.log('Video wurde erfolgreich hochgeladen!');
               progressElement.textContent = 'Video wurde erfolgreich hochgeladen!';
-              window.location.href = '/danke.html'; // Ändern Sie dies in die URL, zu der Sie weiterleiten möchten.
+              window.location.href = `/record2.html?id=${id}`;
             } else {
               console.error('Fehler beim Hochladen des Videos.');
               progressElement.textContent = 'Fehler beim Hochladen des Videos.';
